@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //echo "hola mundo";
+    //echo "<h1>hola mundo </h1>";
     return view('welcome');
 });
+//variar la url
+Route::get('/bienvenida', function () {
+    $mensj = "mensaje desde servidor";
+    return view('bienvenida', ['msj' => $mensj]);
+});
+Route::get('/contactame', function () {
+    $mensj = "contacto";
+    return view('contacto', ['msj' => $mensj]);
+})->name('contacto');

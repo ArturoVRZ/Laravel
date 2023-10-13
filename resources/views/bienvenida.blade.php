@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
+    <title>Bienvenida</title>
 </head>
 <body>
-    <h1>Bienvenido</h1>
-    <a href="/contacto"> Contacto </a>
-    <a href="{{ route('contacto') }}"> Contacto (Ruta con nombre)</a>
+    <h1><?php echo $msj ?></h1>
+    <h1><?= $msj ?></h1>
+    <h1>{{$msj}}</h1>
 </body>
 </html>
