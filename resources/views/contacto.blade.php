@@ -7,8 +7,6 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Bienvenido</h1>
-    <a href="/contacto"> Contacto </a>
-    <a href="{{ route('contacto') }}"> Contacto (Ruta con nombre)</a>
+    <h1>{{$msj}}</h1>
 </body>
 </html>
