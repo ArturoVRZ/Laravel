@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::get('/contactame', function () {
     $mensj = "contacto";
     return view('contacto', ['msj' => $mensj]);
 })->name('contacto');
+//para llamar un controlador
+Route::get('/',[PostController::class,'test']);

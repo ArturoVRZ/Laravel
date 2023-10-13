@@ -7,7 +7,7 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Bienvenido</h1>
+    <h1>Bienvenido {{$user->name}}</h1>
     <a href="/contacto"> Contacto </a>
     <a href="{{ route('contacto') }}"> Contacto (Ruta con nombre)</a>
 </body>
