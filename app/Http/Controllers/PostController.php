@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /*Funcion para testiar como funciona el controlador*/
+    function test(){
+        $user = User::find(1);
+        return view('welcome',['user' => $user, 'html' => '<h1>Titulo</h1>', 'array' => [1,2,3,4,'alan']]);
+    }
     /**
      * Display a listing of the resource.
      */
-    function test(){
-        $user = User::find(1);
-        return view('welcome', ['user' => $user]);
-    }
     public function index()
     {
         //
