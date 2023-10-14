@@ -7,6 +7,8 @@
     <title>Home</title>
 </head>
 <body>
+    {{--fragmento --}}
+    @include('subview')
     <h1>Bienvenido {{$user->name}}</h1>
     <a href="/contacto"> Contacto </a>
     <a href="{{ route('contacto') }}"> Contacto (Ruta con nombre)</a>
@@ -27,7 +29,7 @@
     @forelse ($array as $a)
         <p>{{$a}}</p>
     @empty
-            NO hay nada
+        NO hay nada
     @endforelse
 </body>
 </html>
