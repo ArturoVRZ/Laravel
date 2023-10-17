@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Crud\CrudController;
 use App\Http\Controllers\Post\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,19 @@ Route::get('/contactame', function () {
 })->name('contacto');
 //para llamar un controlador
 Route::get('/', [PostController::class, 'index']);
+Route::get('/layout', function () {
+    return view('layouts.layoutIndex');
+});
+
+//ruta de tipo recurso para CRUD
+Route::resource('post',CrudController::class);
+/* agrega todas estas rutas las puedo ver en php artisan route:list
+Route::get('post',[CrudController::class,'index']);
+Route::get('post/create',[CrudController::class,'create']);
+Route::get('post/{post}',[CrudController::class,'show']);
+Route::get('post/{post}/edit',[CrudController::class,'edit']);
+
+Route::post('post',[CrudController::class,'store']);
+Route::put('post/{post}',[CrudController::class,'update']);
+Route::delete('post/{post}',[CrudController::class,'destroy']);
+*/
