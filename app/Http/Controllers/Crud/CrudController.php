@@ -34,8 +34,6 @@ class CrudController extends Controller
      */
     public function store(StoreCrudRequest $request)
     {
-        //
-        //echo ($request->title);
         Crud::create($request->all());
     }
 
