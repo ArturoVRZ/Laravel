@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title','slug'];
+    
     public function cruds(){
         return $this->hasMany(Crud::class);
     }
