@@ -7,9 +7,6 @@ use App\Http\Requests\PutCrudRequest;
 use App\Http\Requests\StoreCrudRequest;
 use App\Models\Category;
 use App\Models\Crud;
-use Illuminate\Http\Request;
-
-use function Laravel\Prompts\alert;
 
 class CrudController extends Controller
 {
@@ -68,12 +65,12 @@ class CrudController extends Controller
      */
     public function update(PutCrudRequest $request, Crud $post) //actualiza la base de datos
     {
+        $data = $request->all();
         //nombre y disco para guardar la imagen
-        $nombre = $request->image->getClientOriginalName();
-        $request->image->move(public_path("image"), $nombre);
-        $request["image"] = $nombre;
-        dd($request->all());
-        $post->update($request->all());
+        $nombre = $data["image"]->getClientOriginalName();
+        $data["image"]->move(public_path("image"), $nombre);
+        $data["image"] = $nombre;
+        $post->update($data);
         //enviar a ruta index con un mensaje tipo flash para usarlo en el layout
         return redirect("/post")->with('status',"Registro actualizado");
     }
