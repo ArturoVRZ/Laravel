@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Crud\CategoryController;
 use App\Http\Controllers\Crud\CrudController;
 use App\Http\Controllers\Post\PostController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::get('/layout', function () {
 
 //ruta de tipo recurso para CRUD
 Route::resource('post',CrudController::class);
+Route::resource('category',CategoryController::class);
 /* agrega todas estas rutas las puedo ver en php artisan route:list
 Route::get('post',[CrudController::class,'index']);
 Route::get('post/create',[CrudController::class,'create']);
