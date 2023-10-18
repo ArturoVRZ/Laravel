@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Post</title>
-</head>
-<body>
+@extends('crud.layout')
+
+@section('content')
     <h1>Crear Post</h1>
+    @if ($errors->any())
+        @foreach ($errors->all() as $e)
+            <div>
+                {{$e}}
+            </div>
+        @endforeach
+    @endif
     <form action="{{ route('post.store') }}" method="post"> <!--llamamos a la post.store que es la ruta post que se encarga de meter los datos-->
         @csrf <!-- ayuda a que la peticion sea segura-->
         <label for="">Titulo</label>
@@ -33,5 +34,4 @@
         <input type="text" name="image" id="">
         <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
+@endsection
