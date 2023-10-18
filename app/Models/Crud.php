@@ -11,4 +11,8 @@ class Crud extends Model
 
     //seguridad al hacer post a la base de datos
     protected $fillable = ['title','slug','content','description','category_id','posted','image'];
+
+    public function category(){
+        return $this->belongsTo(Category::class,'category_id' );
+    }
 }

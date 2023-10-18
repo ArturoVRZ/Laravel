@@ -9,7 +9,7 @@
             </div>
         @endforeach
     @endif
-    <form action="{{ route('post.update',$post->id) }}" method="post"> <!--llamamos a la post.store que es la ruta post que se encarga de meter los datos-->
+    <form action="{{ route('post.update',$post->id) }}" method="post" enctype="multipart/form-data"> <!--llamamos a la post.store que es la ruta post que se encarga de meter los datos-->
         @csrf <!-- ayuda a que la peticion sea segura-->
         @method("PUT")
         <label for="">Titulo</label>
@@ -32,6 +32,7 @@
             <option {{ $post->posted == "not" ? 'selected' : ''}} value="not">No</option>
         </select>
         <label for="">Imagen</label>
+        <input type="file" name="image" id="">
         <input type="text" name="image" id="" value="{{$post->image}}">
         <button type="submit">Enviar</button>
     </form>

@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Crud;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\alert;
+
 class CrudController extends Controller
 {
     /**
@@ -16,7 +18,6 @@ class CrudController extends Controller
      */
     public function index() //nos ayuda a regresar una pagina con los datos
     {
-        //
         //$datos = Crud::get();
         $datos = Crud::paginate(1);
         return view('crud.index',['datos' => $datos]);
@@ -39,14 +40,17 @@ class CrudController extends Controller
     public function store(StoreCrudRequest $request) //se llama desde create y hace la carga a la base de datos
     {
         Crud::create($request->all());
+        return redirect("/post")->with('status',"Registro Creado");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Crud $crud)
+    public function show(Crud $post)
     {
         //
+        $categories = Category::get();
+        echo view('crud.show', compact('categories', 'post'));
     }
 
     /**
@@ -64,15 +68,22 @@ class CrudController extends Controller
      */
     public function update(PutCrudRequest $request, Crud $post) //actualiza la base de datos
     {
-        //
+        //nombre y disco para guardar la imagen
+        $nombre = $request->image->getClientOriginalName();
+        $request->image->move(public_path("image"), $nombre);
+        $request["image"] = $nombre;
+        dd($request->all());
         $post->update($request->all());
+        //enviar a ruta index con un mensaje tipo flash para usarlo en el layout
+        return redirect("/post")->with('status',"Registro actualizado");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Crud $crud)
+    public function destroy(Crud $post)
     {
-        //
+        $post->delete();
+        return redirect('/post')->with('status',"Registro Eliminado");
     }
 }
