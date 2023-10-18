@@ -29,6 +29,7 @@ class PutCrudRequest extends FormRequest
             "description" => "required|min:10",
             "posted" => "required",
             "category_id" => "required",
+            "image" => "required|mimes:jpeg,jpg,png|max:10240"
         ];
     }
 }
