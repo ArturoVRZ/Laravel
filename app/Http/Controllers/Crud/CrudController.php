@@ -37,7 +37,7 @@ class CrudController extends Controller
     public function store(StoreCrudRequest $request) //se llama desde create y hace la carga a la base de datos
     {
         Crud::create($request->all());
-        return redirect("/post")->with('status',"Registro Creado");
+        return redirect("/dashboard/post")->with('status',"Registro Creado");
     }
 
     /**
@@ -72,7 +72,7 @@ class CrudController extends Controller
         $data["image"] = $nombre;
         $post->update($data);
         //enviar a ruta index con un mensaje tipo flash para usarlo en el layout
-        return redirect("/post")->with('status',"Registro actualizado");
+        return redirect("/dashboard/post")->with('status',"Registro actualizado");
     }
 
     /**
@@ -81,6 +81,6 @@ class CrudController extends Controller
     public function destroy(Crud $post)
     {
         $post->delete();
-        return redirect('/post')->with('status',"Registro Eliminado");
+        return redirect('/dashboard/post')->with('status',"Registro Eliminado");
     }
 }

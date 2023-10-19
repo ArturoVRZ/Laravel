@@ -37,7 +37,7 @@ class CategoryController extends Controller
     public function store(StoreCrudRequest $request) //se llama desde create y hace la carga a la base de datos
     {
         Category::create($request->all());
-        return redirect("/category")->with('status',"Registro Creado");
+        return redirect("/dashboard/category")->with('status',"Registro Creado");
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
         //enviar a ruta index con un mensaje tipo flash para usarlo en el layout
-        return redirect("/category")->with('status',"Registro actualizado");
+        return redirect("/dashboard/category")->with('status',"Registro actualizado");
     }
 
     /**
@@ -74,6 +74,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect('/category')->with('status',"Registro Eliminado");
+        return redirect('/dashboard/category')->with('status',"Registro Eliminado");
     }
 }
